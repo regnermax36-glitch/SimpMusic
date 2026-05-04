@@ -191,8 +191,8 @@ sentry {
                 null
             }
         authToken.set(token ?: "")
-        includeProguardMapping.set(true)
-        autoUploadProguardMapping.set(true)
+        includeProguardMapping.set(false)
+        autoUploadProguardMapping.set(false)
     } else {
         includeProguardMapping.set(false)
         autoUploadProguardMapping.set(false)
