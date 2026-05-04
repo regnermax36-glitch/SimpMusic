@@ -112,6 +112,7 @@ import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import com.maxrave.simpmusic.ui.theme.md_theme_dark_primary
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.asImageBitmap
@@ -160,6 +161,7 @@ import com.maxrave.simpmusic.ui.component.FullscreenLyricsSheet
 import com.maxrave.simpmusic.ui.component.HeartCheckBox
 import com.maxrave.simpmusic.ui.component.InfoPlayerBottomSheet
 import com.maxrave.simpmusic.ui.component.LyricsView
+import com.maxrave.simpmusic.ui.component.AlienEqualizer
 import com.maxrave.simpmusic.ui.component.NowPlayingBottomSheet
 import com.maxrave.simpmusic.ui.component.PlayPauseButton
 import com.maxrave.simpmusic.ui.component.PlayerControlLayout
@@ -350,7 +352,7 @@ fun NowPlayingScreenContent(
     }
 
     var spotShadowColor by remember {
-        mutableStateOf(Color.White)
+        mutableStateOf(md_theme_dark_primary)
     }
 
     val blurBg by sharedViewModel.blurBg.collectAsStateWithLifecycle()
@@ -444,7 +446,7 @@ fun NowPlayingScreenContent(
     )
     val rainbowColor = hsvToColor(rainbowHue, 1f, 1f)
     val sliderTrackColor by animateColorAsState(
-        targetValue = if (timelineState.isCrossfading) rainbowColor else Color.White,
+        targetValue = if (timelineState.isCrossfading) rainbowColor else md_theme_dark_primary,
         animationSpec = tween(300),
         label = "sliderCrossfadeColor",
     )
@@ -853,12 +855,12 @@ fun NowPlayingScreenContent(
                             Text(
                                 text = stringResource(Res.string.now_playing_upper),
                                 style = typo().bodyMedium,
-                                color = Color.White,
+                                color = md_theme_dark_primary,
                             )
                             Text(
                                 text = screenDataState.playlistName,
                                 style = typo().labelMedium,
-                                color = Color.White,
+                                color = md_theme_dark_primary,
                                 textAlign = TextAlign.Center,
                                 maxLines = 1,
                                 modifier =
@@ -879,7 +881,7 @@ fun NowPlayingScreenContent(
                             Icon(
                                 imageVector = dismissIcon,
                                 contentDescription = "",
-                                tint = Color.White,
+                                tint = md_theme_dark_primary,
                             )
                         }
                     },
@@ -890,7 +892,7 @@ fun NowPlayingScreenContent(
                                 Icon(
                                     imageVector = Icons.AutoMirrored.Outlined.OpenInNew,
                                     contentDescription = "Mini Player",
-                                    tint = Color.White,
+                                    tint = md_theme_dark_primary,
                                 )
                             }
                         }
@@ -900,7 +902,7 @@ fun NowPlayingScreenContent(
                             Icon(
                                 painter = painterResource(Res.drawable.baseline_more_vert_24),
                                 contentDescription = "",
-                                tint = Color.White,
+                                tint = md_theme_dark_primary,
                             )
                         }
                     },
@@ -1072,7 +1074,7 @@ fun NowPlayingScreenContent(
                                                             Icon(
                                                                 painter = painterResource(Res.drawable.baseline_fullscreen_24),
                                                                 contentDescription = "",
-                                                                tint = Color.White,
+                                                                tint = md_theme_dark_primary,
                                                             )
                                                         }
                                                         Row(
@@ -1099,7 +1101,7 @@ fun NowPlayingScreenContent(
                                                             ) {
                                                                 Icon(
                                                                     imageVector = Icons.Rounded.Replay5,
-                                                                    tint = Color.White,
+                                                                    tint = md_theme_dark_primary,
                                                                     contentDescription = "",
                                                                     modifier =
                                                                         Modifier
@@ -1125,7 +1127,7 @@ fun NowPlayingScreenContent(
                                                             ) {
                                                                 Icon(
                                                                     imageVector = Icons.Rounded.Forward5,
-                                                                    tint = Color.White,
+                                                                    tint = md_theme_dark_primary,
                                                                     contentDescription = "",
                                                                     modifier =
                                                                         Modifier
@@ -1146,7 +1148,7 @@ fun NowPlayingScreenContent(
                                                                             Icons.Filled.Subtitles
                                                                         },
                                                                     contentDescription = "",
-                                                                    tint = Color.White,
+                                                                    tint = md_theme_dark_primary,
                                                                 )
                                                             }
                                                         }
@@ -1219,7 +1221,7 @@ fun NowPlayingScreenContent(
                                                 text = screenDataState.nowPlayingTitle,
                                                 style = typo().headlineMedium,
                                                 maxLines = 1,
-                                                color = Color.White,
+                                                color = md_theme_dark_primary,
                                                 modifier =
                                                     Modifier
                                                         .fillMaxWidth()
@@ -1294,7 +1296,7 @@ fun NowPlayingScreenContent(
                                                             sharedViewModel.addToYouTubeLiked()
                                                         },
                                                     ) {
-                                                        Icon(imageVector = Icons.Rounded.CheckCircle, tint = Color.White, contentDescription = "")
+                                                        Icon(imageVector = Icons.Rounded.CheckCircle, tint = md_theme_dark_primary, contentDescription = "")
                                                     }
                                                 } else {
                                                     IconButton(
@@ -1311,7 +1313,7 @@ fun NowPlayingScreenContent(
                                                     ) {
                                                         Icon(
                                                             imageVector = Icons.Rounded.AddCircleOutline,
-                                                            tint = Color.White,
+                                                            tint = md_theme_dark_primary,
                                                             contentDescription = "",
                                                         )
                                                     }
@@ -1488,6 +1490,7 @@ fun NowPlayingScreenContent(
                                                     .height(5.dp),
                                         )
                                         // Control Button Layout
+                                        AlienEqualizer(modifier = Modifier.padding(horizontal = 30.dp, vertical = 10.dp), color = md_theme_dark_primary, isPlaying = controllerState.isPlaying)
                                         PlayerControlLayout(
                                             controllerState,
                                         ) {
@@ -1517,7 +1520,7 @@ fun NowPlayingScreenContent(
                                                 showInfoBottomSheet = true
                                             },
                                         ) {
-                                            Icon(imageVector = Icons.Outlined.Info, tint = Color.White, contentDescription = "")
+                                            Icon(imageVector = Icons.Outlined.Info, tint = md_theme_dark_primary, contentDescription = "")
                                         }
 
                                         Row(
@@ -1537,7 +1540,7 @@ fun NowPlayingScreenContent(
                                             ) {
                                                 Icon(
                                                     painter = painterResource(Res.drawable.baseline_playlist_add_24),
-                                                    tint = Color.White,
+                                                    tint = md_theme_dark_primary,
                                                     contentDescription = "Add to Playlist",
                                                 )
                                             }
@@ -1555,7 +1558,7 @@ fun NowPlayingScreenContent(
                                             ) {
                                                 Icon(
                                                     imageVector = Icons.AutoMirrored.Rounded.QueueMusic,
-                                                    tint = Color.White,
+                                                    tint = md_theme_dark_primary,
                                                     contentDescription = "",
                                                 )
                                             }
@@ -1614,7 +1617,7 @@ fun NowPlayingScreenContent(
                                                                 ).focusable(),
                                                         text = lineText,
                                                         style = typo().bodyMedium,
-                                                        color = Color.White,
+                                                        color = md_theme_dark_primary,
                                                         maxLines = 1,
                                                     )
                                                 }
@@ -1647,7 +1650,7 @@ fun NowPlayingScreenContent(
                                                 Text(
                                                     text = screenDataState.songInfoData?.author ?: "",
                                                     style = typo().labelMedium,
-                                                    color = Color.White,
+                                                    color = md_theme_dark_primary,
                                                 )
                                             }
                                         }
@@ -1701,7 +1704,7 @@ fun NowPlayingScreenContent(
                                         Text(
                                             text = stringResource(Res.string.lyrics),
                                             style = typo().labelMedium,
-                                            color = Color.White,
+                                            color = md_theme_dark_primary,
                                         )
                                         if (screenDataState.lyricsData?.translatedLyrics?.second == LyricsProvider.AI) {
                                             Spacer(modifier = Modifier.width(8.dp))
@@ -1730,7 +1733,7 @@ fun NowPlayingScreenContent(
                                                     Icon(
                                                         imageVector = Icons.Rounded.ThumbsUpDown,
                                                         contentDescription = stringResource(Res.string.rate_lyrics),
-                                                        tint = Color.White,
+                                                        tint = md_theme_dark_primary,
                                                         modifier = Modifier.size(16.dp),
                                                     )
                                                 }
@@ -1889,14 +1892,14 @@ fun NowPlayingScreenContent(
                                             Text(
                                                 text = stringResource(Res.string.artists),
                                                 style = typo().labelMedium,
-                                                color = Color.White,
+                                                color = md_theme_dark_primary,
                                             )
                                         }
                                         Column(Modifier.align(Alignment.BottomStart)) {
                                             Text(
                                                 text = screenDataState.songInfoData?.author ?: "",
                                                 style = typo().labelMedium,
-                                                color = Color.White,
+                                                color = md_theme_dark_primary,
                                             )
                                             Spacer(modifier = Modifier.height(5.dp))
                                             Text(
@@ -1929,7 +1932,7 @@ fun NowPlayingScreenContent(
                                     Text(
                                         text = stringResource(Res.string.published_at, screenDataState.songInfoData?.uploadDate ?: ""),
                                         style = typo().labelSmall,
-                                        color = Color.White,
+                                        color = md_theme_dark_primary,
                                     )
                                     Spacer(modifier = Modifier.height(10.dp))
                                     Text(
@@ -1939,7 +1942,7 @@ fun NowPlayingScreenContent(
                                                 "%,d".format(screenDataState.songInfoData?.viewCount),
                                             ),
                                         style = typo().labelMedium,
-                                        color = Color.White,
+                                        color = md_theme_dark_primary,
                                     )
                                     Spacer(modifier = Modifier.height(10.dp))
                                     Text(
@@ -1955,7 +1958,7 @@ fun NowPlayingScreenContent(
                                     Text(
                                         text = stringResource(Res.string.description),
                                         style = typo().labelSmall,
-                                        color = Color.White,
+                                        color = md_theme_dark_primary,
                                     )
                                     Spacer(modifier = Modifier.height(10.dp))
                                     DescriptionView(
@@ -2039,7 +2042,7 @@ fun NowPlayingScreenContent(
                                 Text(
                                     text = screenDataState.nowPlayingTitle,
                                     style = typo().bodyMedium,
-                                    color = Color.White,
+                                    color = md_theme_dark_primary,
                                     maxLines = 1,
                                     modifier =
                                         Modifier
@@ -2121,7 +2124,7 @@ fun NowPlayingScreenContent(
                                         color = Color.Transparent,
                                         shape = RoundedCornerShape(4.dp),
                                     ),
-                            color = Color.White,
+                            color = md_theme_dark_primary,
                             trackColor = Color.Gray.copy(alpha = 0.4f),
                             strokeCap = StrokeCap.Round,
                             drawStopIndicator = {},

@@ -32,77 +32,77 @@ fun typo(): Typography {
                     fontSize = 13.sp,
                     fontWeight = FontWeight.SemiBold,
                     fontFamily = fontFamily,
-                    color = Color.White,
+                    color = md_theme_dark_primary, // Alien Green
                 ),
             titleMedium =
                 TextStyle(
                     fontSize = 18.sp,
                     fontWeight = FontWeight.SemiBold,
                     fontFamily = fontFamily,
-                    color = Color.White,
+                    color = md_theme_dark_primary,
                 ),
             titleLarge =
                 TextStyle(
                     fontSize = 25.sp,
                     fontWeight = FontWeight.Bold,
                     fontFamily = fontFamily,
-                    color = Color.White,
+                    color = md_theme_dark_primary,
                 ),
             bodySmall =
                 TextStyle(
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Normal,
                     fontFamily = fontFamily,
-                    color = Color(0xFFA8A8A8),
+                    color = md_theme_dark_onSurfaceVariant,
                 ),
             bodyMedium =
                 TextStyle(
                     fontSize = 13.sp,
                     fontWeight = FontWeight.Normal,
                     fontFamily = fontFamily,
-                    color = Color(0xFFA8A8A8),
+                    color = md_theme_dark_onSurfaceVariant,
                 ),
             bodyLarge =
                 TextStyle(
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Normal,
                     fontFamily = fontFamily,
-                    color = Color(0xFFA8A8A8),
+                    color = md_theme_dark_onSurfaceVariant,
                 ),
             displayLarge =
                 TextStyle(
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Normal,
                     fontFamily = fontFamily,
-                    color = Color(0xFFA8A8A8),
+                    color = md_theme_dark_onSurfaceVariant,
                 ),
             headlineMedium =
                 TextStyle(
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     fontFamily = fontFamily,
-                    color = Color(0xFFA8A8A8),
+                    color = md_theme_dark_secondary, // Neon Cyan
                 ),
             headlineLarge =
                 TextStyle(
                     fontSize = 23.sp,
                     fontWeight = FontWeight.Bold,
                     fontFamily = fontFamily,
-                    color = Color(0xFFA8A8A8),
+                    color = md_theme_dark_secondary,
                 ),
             labelMedium =
                 TextStyle(
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                     fontFamily = fontFamily,
-                    color = Color(0xFFA8A8A8),
+                    color = md_theme_dark_onSurfaceVariant,
                 ),
             labelSmall =
                 TextStyle(
                     fontSize = 14.sp,
                     fontWeight = FontWeight.SemiBold,
                     fontFamily = fontFamily,
-                    color = Color(0xFFA8A8A8),
+                    color = md_theme_dark_onSurfaceVariant,
                 ),
             // ...
         )
