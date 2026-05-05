@@ -106,6 +106,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.foundation.layout.padding
+
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
@@ -1490,6 +1493,7 @@ fun NowPlayingScreenContent(
                                                     .height(5.dp),
                                         )
                                         // Control Button Layout
+                                        Text("REMIX MODE ACTIVE", style = typo().labelSmall, color = md_theme_dark_primary, fontWeight = FontWeight.Bold, modifier = Modifier.padding(horizontal = 30.dp, vertical = 4.dp))
                                         AlienEqualizer(modifier = Modifier.padding(horizontal = 30.dp, vertical = 10.dp), color = md_theme_dark_primary, isPlaying = controllerState.isPlaying)
                                         PlayerControlLayout(
                                             controllerState,

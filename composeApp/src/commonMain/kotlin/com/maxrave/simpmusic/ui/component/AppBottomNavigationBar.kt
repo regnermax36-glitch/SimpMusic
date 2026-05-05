@@ -2,6 +2,10 @@ package com.maxrave.simpmusic.ui.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
@@ -50,83 +54,69 @@ fun AppBottomNavigationBar(
                 is HomeDestination -> BottomNavScreen.Home.ordinal
                 is SearchDestination -> BottomNavScreen.Search.ordinal
                 is LibraryDestination -> BottomNavScreen.Library.ordinal
-                else -> BottomNavScreen.Home.ordinal // Default to Home if not recognized
+                else -> BottomNavScreen.Home.ordinal
             },
         )
     }
+
     Box(
-        modifier =
-            Modifier
-                .wrapContentSize()
-                .then(
-                    if (isTranslucentBackground) {
-                        Modifier.background(
-                            Brush.verticalGradient(
-                                listOf(
-                                    Color.Transparent,
-                                    Color.Black.copy(alpha = 0.5f),
-                                    Color.Black.copy(alpha = 0.8f),
-                                    Color.Black,
-                                ),
-                            ),
-                        )
-                    } else {
-                        Modifier
-                    },
-                ),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 40.dp, vertical = 24.dp) // Floating pill padding
     ) {
-        NavigationBar(
-            windowInsets = WindowInsets(0, 0, 0, 0),
-            containerColor =
-                if (isTranslucentBackground) {
-                    Color.Transparent
-                } else {
-                    Color.Black
-                },
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(CircleShape)
+                .background(Color(0x80222222)) // Frosted glass dark look (iOS/WearOS style)
+                .padding(vertical = 12.dp, horizontal = 24.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             bottomNavScreens.forEach { screen ->
-                NavigationBarItem(
-                    selected = selectedIndex == screen.ordinal,
-                    onClick = {
-                        if (selectedIndex == screen.ordinal) {
-                            if (currentBackStackEntry?.destination?.hierarchy?.any {
-                                    it.hasRoute(screen.destination::class)
-                                } == true
-                            ) {
-                                reloadDestinationIfNeeded(
-                                    screen.destination::class,
-                                )
-                            } else {
-                                navController.navigate(screen.destination)
-                            }
-                        } else {
-                            selectedIndex = screen.ordinal
-                            navController.navigate(screen.destination) {
-                                popUpTo(navController.graph.startDestinationId) {
-                                    saveState = true
+                val isSelected = selectedIndex == screen.ordinal
+                val backgroundColor by animateColorAsState(if (isSelected) Color(0x40FFFFFF) else Color.Transparent)
+                val iconOffset by animateDpAsState(if (isSelected) (-4).dp else 0.dp)
+
+                Column(
+                    modifier = Modifier
+                        .clip(CircleShape)
+                        .background(backgroundColor)
+                        .clickable {
+                            if (selectedIndex == screen.ordinal) {
+                                if (currentBackStackEntry?.destination?.hierarchy?.any {
+                                        it.hasRoute(screen.destination::class)
+                                    } == true
+                                ) {
+                                    reloadDestinationIfNeeded(screen.destination::class)
+                                } else {
+                                    navController.navigate(screen.destination)
                                 }
-                                launchSingleTop = true
-                                restoreState = true
+                            } else {
+                                selectedIndex = screen.ordinal
+                                navController.navigate(screen.destination) {
+                                    popUpTo(navController.graph.startDestinationId) { saveState = true }
+                                    launchSingleTop = true
+                                    restoreState = true
+                                }
                             }
                         }
-                    },
-                    label = {
-                        Text(
-                            stringResource(screen.title),
-                            style =
-                                if (selectedIndex == screen.ordinal) {
-                                    typo().bodySmall
-                                } else {
-                                    typo().bodySmall.greyScale()
-                                },
+                        .padding(horizontal = 24.dp, vertical = 12.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Box(modifier = Modifier.size(26.dp).offset(y = iconOffset)) {
+                        screen.icon()
+                    }
+                    if (isSelected) {
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Box(
+                            modifier = Modifier
+                                .size(4.dp)
+                                .clip(CircleShape)
+                                .background(Color.White) // Glowing dot for selected state
                         )
-                    },
-                    icon = screen.icon,
-                    modifier =
-                        Modifier.windowInsetsPadding(
-                            NavigationBarDefaults.windowInsets,
-                        ),
-                )
+                    }
+                }
             }
         }
     }
