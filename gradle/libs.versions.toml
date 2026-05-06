@@ -212,7 +212,7 @@ koin-jvm = { module = "io.insert-koin:koin-core-jvm" }
 koin-compose = { module = "io.insert-koin:koin-compose" }
 koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose" }
-koin-android = { module = "io.insert-koin:koin-android"}
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin-bom" }
 
 #Sentry
 sentry-android = { module = "io.sentry:sentry-android", version.ref = "sentry-android"}

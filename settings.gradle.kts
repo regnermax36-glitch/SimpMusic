@@ -92,3 +92,5 @@ project(":media3").projectDir = File(mediaDir, "media3")
 project(":media3-ui").projectDir = File(mediaDir, "media3-ui")
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+include(":compose-ui")
+include(":core-audio")
