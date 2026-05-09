@@ -2,7 +2,7 @@ package com.maxrave.simpmusic.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Year 2076 Alien Space UI Overhaul
+// Year 2076 Alien Space UI Overhaul - WatchOS/Maxregner V Style
 val md_theme_dark_primary = Color(0xFF39FF14) // Alien Green
 val md_theme_dark_onPrimary = Color(0xFF0A3300)
 val md_theme_dark_primaryContainer = Color(0xFF146600)
@@ -23,13 +23,13 @@ val md_theme_dark_errorContainer = Color(0xFF73001A)
 val md_theme_dark_onError = Color(0xFF40000E)
 val md_theme_dark_onErrorContainer = Color(0xFFFF809E)
 
-val md_theme_dark_background = Color(0x32001A0A) // Glassy Deep Space Black
+val md_theme_dark_background = Color(0xFF000000) // Deep True Black for OLED/WatchOS
 val md_theme_dark_onBackground = Color(0xFFE0FFEB)
 
-val md_theme_dark_surface = Color(0x32003314) // Glassy Spaceship Hull
+val md_theme_dark_surface = Color(0xFF111111) // Very Dark Gray for WatchOS depth
 val md_theme_dark_onSurface = Color(0xFFE0FFEB)
 
-val md_theme_dark_surfaceVariant = Color(0x40144D28) // Panel Dark Glassy
+val md_theme_dark_surfaceVariant = Color(0xFF222222) // Elevated WatchOS panels
 val md_theme_dark_onSurfaceVariant = Color(0xFFB0FFD0)
 
 val md_theme_dark_outline = Color(0xFF40CC80)
