@@ -1493,8 +1493,12 @@ fun NowPlayingScreenContent(
                                                     .height(5.dp),
                                         )
                                         // Control Button Layout
-                                        Text("REMIX MODE ACTIVE", style = typo().labelSmall, color = md_theme_dark_primary, fontWeight = FontWeight.Bold, modifier = Modifier.padding(horizontal = 30.dp, vertical = 4.dp))
-                                        AlienEqualizer(modifier = Modifier.padding(horizontal = 30.dp, vertical = 10.dp), color = md_theme_dark_primary, isPlaying = controllerState.isPlaying)
+                                        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(horizontal = 30.dp, vertical = 4.dp)) {
+                                            Text("Save Darkwave Remix", style = typo().labelSmall, color = md_theme_dark_primary, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f).clickable {
+
+                                            })
+                                        }
+
                                         PlayerControlLayout(
                                             controllerState,
                                         ) {
