@@ -50,10 +50,10 @@ jobs:
           echo "SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}" >> ./local.properties
 
       - name: Generate aboutLibraries.json
-        run: ./gradlew exportLibraryDefinitions
+        run: chmod 755 * && ./gradlew exportLibraryDefinitions
 
       - name: Build release APK
-        run: ./gradlew androidApp:assembleRelease
+        run: chmod 755 * && ./gradlew androidApp:assembleRelease
 
       - name: Check build-tools version
         shell: bash
