@@ -70,6 +70,8 @@ include(
     ":crashlytics",
     ":crashlytics-empty",
     ":kizzy",
+    ":maxregner-ui",
+    ":maxregner-player",
 )
 
 // core modules
@@ -90,5 +92,9 @@ project(":media-jvm").projectDir = File(mediaDir, "media-jvm")
 project(":media-jvm-ui").projectDir = File(mediaDir, "media-jvm-ui")
 project(":media3").projectDir = File(mediaDir, "media3")
 project(":media3-ui").projectDir = File(mediaDir, "media3-ui")
+
+// MaxRegner custom libs (root-level, not submodules)
+project(":maxregner-ui").projectDir = File(rootDir, "maxregner-ui")
+project(":maxregner-player").projectDir = File(rootDir, "maxregner-player")
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
