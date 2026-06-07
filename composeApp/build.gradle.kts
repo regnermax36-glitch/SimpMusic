@@ -85,7 +85,9 @@ kotlin {
             // Runtime
             api(libs.startup.runtime)
 
-            // MaxRegner Player — Android engine (MediaCodec + AudioTrack, replaces media3/ExoPlayer)
+            api(projects.media3)
+            api(projects.media3Ui)
+            // MaxRegner Player — Android engine (MediaCodec + AudioTrack)
             api(projects.maxregnerPlayer)
         }
         commonMain.dependencies {
@@ -101,6 +103,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
             // Compose
+            implementation(libs.compose.material3)
             implementation(libs.compose.material3.adaptive)
             implementation(libs.compose.material.ripple)
             implementation(libs.compose.material.icons.core)
@@ -169,7 +172,8 @@ kotlin {
             implementation(libs.kotlinx.coroutinesSwing)
             implementation(libs.sentry.jvm)
             implementation(libs.native.tray)
-            // MaxRegner Player — Desktop engine (javax.sound.sampled, replaces media-jvm/VLCJ)
+            api(projects.mediaJvmUi)
+            // MaxRegner Player — Desktop engine (javax.sound.sampled)
             api(projects.maxregnerPlayer)
         }
     }
